@@ -24,6 +24,14 @@ fingerprint = "aa:bb:cc:dd:ee:ff:00:11:22:33:44:55:66:77:88:99"
 # Local path to the .pem file you downloaded when generating the API
 # key above. Leave as-is if you saved it to ~/.oci/oci_api_key.pem as
 # suggested; otherwise point this at wherever you actually saved it.
+#
+# Windows note: the OCI provider does NOT expand a leading ~ on
+# Windows (this is a real, confirmed gap — Terraform's own file()
+# calls handle ~ fine, but the OCI provider's own config loader
+# doesn't). If you're on Windows, use a full path instead, e.g.:
+#   private_key_path = "C:/Users/you/.oci/oci_api_key.pem"
+# (forward slashes, even on Windows — backslashes need escaping in
+# HCL strings and are easy to get wrong).
 private_key_path = "~/.oci/oci_api_key.pem"
 
 # For a new account this is usually identical to tenancy_ocid — the

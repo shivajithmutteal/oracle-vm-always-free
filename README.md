@@ -245,6 +245,7 @@ Set a **$1 budget alert** in the console (Governance → Cost Management → Bud
 |---|---|
 | "Out of host capacity" | Expected — see [Part 5](#part-5--out-of-capacity-expected--heres-how-to-get-past-it) |
 | "Credentials not found" / auth errors | Check `private_key_path` points to the actual `.pem` file, and the fingerprint matches |
+| "did not find a proper configuration for private key" | **Windows-specific:** the OCI provider doesn't expand `~` in `private_key_path`. Use a full path with forward slashes instead, e.g. `"C:/Users/you/.oci/oci_api_key.pem"` — confirmed via testing, not a config mistake |
 | Limit/quota exceeded (not a capacity error) | Lower `instance_ocpu` / `instance_memory_gb` — your account's real limit may be 2/12, not 4/24 |
 | Can't SSH after creation | Confirm the security list allows port 22 (it does by default in `main.tf`); also check the VM's own firewall (iptables/firewalld) isn't blocking it separately — cloud + OS firewalls are two independent layers |
 | App port unreachable | Same as above, but for `var.app_port` — also confirm the app is actually listening on `0.0.0.0`, not `127.0.0.1` |
