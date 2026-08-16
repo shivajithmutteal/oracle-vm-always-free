@@ -1,0 +1,42 @@
+# Copy this file to terraform.tfvars and fill in your own values.
+# terraform.tfvars is git-ignored — your credentials never get committed.
+
+# --- Oracle Cloud API credentials ---
+# See README.md → "Get your API credentials" for exactly where to find
+# each of these in the Oracle Cloud console.
+tenancy_ocid     = "ocid1.tenancy.oc1...PASTE_YOUR_TENANCY_OCID"
+user_ocid        = "ocid1.user.oc1...PASTE_YOUR_USER_OCID"
+fingerprint      = "aa:bb:cc:dd:ee:ff:00:11:22:33:44:55:66:77:88:99"
+private_key_path = "~/.oci/oci_api_key.pem"
+compartment_ocid = "ocid1.compartment.oc1...PASTE_YOUR_COMPARTMENT_OCID"
+
+# --- Region ---
+# Must be your account's home region — Always Free resources can't be
+# created outside it without upgrading to Pay As You Go. The console
+# shows your home region under Profile → Tenancy.
+region = "ap-hyderabad-1"
+
+# --- Availability domain ---
+# 0 = AD-1, 1 = AD-2, 2 = AD-3. If you hit "out of capacity" on one,
+# try the next — see README.md → "Out of capacity".
+availability_domain_index = 0
+
+# --- Instance sizing ---
+# Always Free historically allowed up to 4 OCPU / 24 GB; some newer
+# accounts are capped at 2 OCPU / 12 GB. Check the console's live
+# "Always Free-eligible" badge and adjust these to match — going over
+# your account's real limit will fail the request, not overcharge you.
+instance_ocpu      = 4
+instance_memory_gb = 24
+
+# --- Instance name ---
+instance_name = "free-tier-vm"
+
+# --- App port ---
+# Publicly opened alongside SSH. Set to whatever you plan to run
+# (3000, 8080, etc.), or ignore if you'll only ever connect over SSH.
+app_port = 3000
+
+# --- SSH key ---
+# This is how you'll log into the VM after creation.
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
