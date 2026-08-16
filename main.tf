@@ -32,9 +32,7 @@ resource "oci_core_vcn" "main" {
   compartment_id = var.compartment_ocid
   display_name   = var.vcn_name
   cidr_blocks    = [var.vcn_cidr]
-
-  enable_dns_hostnames = true
-  enable_dns_support   = true
+  dns_label      = "maindns"
 }
 
 # Public subnet — the VM's NIC lives here
@@ -141,8 +139,8 @@ resource "oci_core_instance" "free_tier_vm" {
   }
 
   source_details {
-    source_type = "IMAGE"
-    image_id    = data.oci_core_images.ubuntu.images[0].id
+    source_type = "image"
+    source_id   = data.oci_core_images.ubuntu.images[0].id
   }
 
   metadata = {

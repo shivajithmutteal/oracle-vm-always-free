@@ -2,12 +2,34 @@
 # terraform.tfvars is git-ignored — your credentials never get committed.
 
 # --- Oracle Cloud API credentials ---
-# See README.md → "Get your API credentials" for exactly where to find
-# each of these in the Oracle Cloud console.
-tenancy_ocid     = "ocid1.tenancy.oc1...PASTE_YOUR_TENANCY_OCID"
-user_ocid        = "ocid1.user.oc1...PASTE_YOUR_USER_OCID"
-fingerprint      = "aa:bb:cc:dd:ee:ff:00:11:22:33:44:55:66:77:88:99"
+# For each line below, replace the ENTIRE text between the quotes
+# with your real value — the placeholder text is just showing you
+# the expected format, not something to append to.
+#
+# Where each value comes from (full walkthrough: README.md → "Get
+# your API credentials"):
+
+# Console → profile icon (top right) → "Tenancy: <your name>" → OCID
+# shown on that page.
+tenancy_ocid = "ocid1.tenancy.oc1...PASTE_YOUR_TENANCY_OCID"
+
+# Console → profile icon → "My Profile" → OCID shown at the top.
+user_ocid = "ocid1.user.oc1...PASTE_YOUR_USER_OCID"
+
+# Console → My Profile → "API keys" tab → after you generate a key
+# pair, the fingerprint is displayed immediately — looks like
+# aa:bb:cc:...
+fingerprint = "aa:bb:cc:dd:ee:ff:00:11:22:33:44:55:66:77:88:99"
+
+# Local path to the .pem file you downloaded when generating the API
+# key above. Leave as-is if you saved it to ~/.oci/oci_api_key.pem as
+# suggested; otherwise point this at wherever you actually saved it.
 private_key_path = "~/.oci/oci_api_key.pem"
+
+# For a new account this is usually identical to tenancy_ocid — the
+# root compartment, shown in the console as "<your name> (root)".
+# Paste the same value as tenancy_ocid above unless you've created a
+# separate compartment.
 compartment_ocid = "ocid1.compartment.oc1...PASTE_YOUR_COMPARTMENT_OCID"
 
 # --- Region ---

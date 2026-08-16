@@ -68,7 +68,7 @@ cd oracle-vm-always-free
 cp terraform.tfvars.example terraform.tfvars
 ```
 
-Edit `terraform.tfvars` with the values from Part 2:
+Open `terraform.tfvars` in an editor. Near the top you'll find five lines with placeholder text between the quotes — for each one, **replace the entire text between the quotes** with your real value (don't append to the placeholder, replace it):
 
 ```hcl
 tenancy_ocid     = "ocid1.tenancy.oc1...your value"
@@ -78,6 +78,16 @@ private_key_path = "~/.oci/oci_api_key.pem"
 compartment_ocid = "ocid1.compartment.oc1...your value"
 region           = "ap-hyderabad-1"   # your home region
 ```
+
+| Line | Where the value comes from |
+|---|---|
+| `tenancy_ocid` | Console → profile icon (top right) → **Tenancy: `<your name>`** → OCID shown on that page |
+| `user_ocid` | Console → profile icon → **My Profile** → OCID shown at the top |
+| `fingerprint` | Shown immediately after generating the API key (My Profile → **API keys** tab) — looks like `aa:bb:cc:...` |
+| `private_key_path` | Leave as-is if you saved the downloaded `.pem` to `~/.oci/oci_api_key.pem`; otherwise point it at wherever you saved it |
+| `compartment_ocid` | Usually identical to `tenancy_ocid` for a new account (root compartment) — paste the same value again |
+
+Everything else in the file (`availability_domain_index`, `instance_ocpu`, `app_port`, etc.) already has a working default — no need to touch those to get a first deploy running.
 
 Then:
 
