@@ -60,7 +60,11 @@ instance_ocpu      = 4
 instance_memory_gb = 24
 
 # --- Instance name ---
-instance_name = "free-tier-vm"
+# instance_name is the display name shown in the console. hostname_label
+# sets the VM's actual DNS hostname within the VCN — a separate field,
+# worth setting to match if you want them consistent.
+instance_name  = "free-tier-vm"
+hostname_label = "free-tier-vm"
 
 # --- App port ---
 # Publicly opened alongside SSH. Set to whatever you plan to run
